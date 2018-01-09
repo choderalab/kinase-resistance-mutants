@@ -31,7 +31,7 @@ def renumber(file_name, output_dir, accession_id):
 
     # File name will point to the name of the file without .pdb at the end
     filename = os.path.basename(file)
-    print('Renumbering %s' % filename)
+    print('Processing %s' % filename)
     id_name = filename[0:-4]
 
     # PDB name will point to the actual file
@@ -54,7 +54,7 @@ def renumber(file_name, output_dir, accession_id):
     pdbseq_list = []
     for residue in structure.get_residues():
         three_letter = residue.get_resname()
-        if three_letter in cap_res:
+        if three_letter not in oneletter:
             pass
         else:
             one_letter_name = oneletter[three_letter]
@@ -78,21 +78,47 @@ def renumber(file_name, output_dir, accession_id):
     seq2 = SeqIO.read("%s.fasta" % file_name, "fasta")  # PDB sequence
 
     alignments = pairwise2.align.localds(seq1.seq, seq2.seq, blosum62, -10, -0.5)
-    alignment_start = alignments[0][3]
-    alignment_end = alignments[0][4]
+
+    if len(alignments) == 0:
+        print('%s does not align to %s. Move to the next structure' % (file_name, accession_id))
+        return None
+    else:
+        alignment_start = alignments[0][3] + 1
+        alignment_end = alignments[0][4] + 1
 
     # Clean up FASTA files
     os.remove("%s.fasta" % file_name)
     os.remove("%s.fasta" % accession)
 
     # Create the list of new residue numbers from the alignment
-    new_resnums = list(range(alignment_start, alignment_end+1))
+    new_resnums = list(range(alignment_start, alignment_end))
 
     # Check if the renumbering is necessary
-    if alignment_start == seq2[0]:
-        print("%s does not need to be renumbered! " % file_name)
+    if cap:
+        first_in_structure = list(structure.get_residues())[1].get_id()[1]
+    else:
+        first_in_structure = list(structure.get_residues())[0].get_id()[1]
+    if first_in_structure == alignment_start:
+        print("%s does not need to be renumbered! Just checking the cap residues" % file_name)
+        for i, residue in enumerate(structure.get_residues()):
+            three_letter = residue.get_resname()
+            if three_letter == 'ACE':  # Set resid for ACE to 1 before the start of the alignment
+                res_id = list(residue.id)
+                res_id[1] = new_resnums[0] - 1
+                if residue.id != tuple(res_id):
+                    residue.id = tuple(res_id)
+                residue.resname = 'ACE'
+            elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
+                res_id = list(residue.id)
+                res_id[1] = new_resnums[-1] + 1
+                res_id[2] = ' '
+                if residue.id != tuple(res_id):
+                    residue.id = tuple(res_id)
+                residue.resname = 'NME'
+            else:
+                pass
         pdb_io.set_structure(structure)
-        output_filename = os.path.join(output_dir, file_name, '-uniprot.pdb')
+        output_filename = os.path.join(output_dir, id_name + '-uniprot.pdb')
         pdb_io.save(output_filename)
     else:
         print("%s does need to be renumbered" % file_name)
@@ -102,11 +128,17 @@ def renumber(file_name, output_dir, accession_id):
             if three_letter == 'ACE':  # Set resid for ACE to 1 before the start of the alignment
                 res_id = list(residue.id)
                 res_id[1] = new_resnums[0] - 1
-                residue.id = tuple(res_id)
+                if residue.id != tuple(res_id):
+                    residue.id = tuple(res_id)
+                residue.resname = 'ACE'
             elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
                 res_id = list(residue.id)
                 res_id[1] = new_resnums[-1] + 1
-                residue.id = tuple(res_id)
+                res_id[2] = ' '
+                if residue.id != tuple(res_id):
+                    residue.id = tuple(res_id)
+            elif three_letter not in cap_res and three_letter not in oneletter:
+                pass
             else:
                 if cap == True:
                     index = i - 1
@@ -119,7 +151,7 @@ def renumber(file_name, output_dir, accession_id):
         #  Write the renumbered PDB file
 
         pdb_io.set_structure(structure)
-        output_filename = os.path.join(output_dir, file_name, 'renumbered-uniprot.pdb')
+        output_filename = os.path.join(output_dir, id_name + '-uniprot.pdb')
         pdb_io.save(output_filename)
 
     return None
@@ -135,4 +167,3 @@ if __name__ == "__main__":
     files = glob(os.path.join(in_path,'*.pdb'))
     for file in files:
         renumber(file, out_path, "P00519")
-
