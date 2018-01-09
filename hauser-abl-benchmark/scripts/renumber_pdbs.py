@@ -110,8 +110,7 @@ def renumber(file_name, output_dir, accession_id):
                 residue.resname = 'ACE'
             elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
                 res_id = list(residue.id)
-                res_id[1] = new_resnums[-1] + 1
-                res_id[2] = ' '
+                res_id[1] = new_resnums[-1]
                 if residue.id != tuple(res_id):
                     residue.id = tuple(res_id)
                 residue.resname = 'NME'
@@ -133,8 +132,7 @@ def renumber(file_name, output_dir, accession_id):
                 residue.resname = 'ACE'
             elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
                 res_id = list(residue.id)
-                res_id[1] = new_resnums[-1] + 1
-                res_id[2] = ' '
+                res_id[1] = new_resnums[-1]
                 if residue.id != tuple(res_id):
                     residue.id = tuple(res_id)
             elif three_letter not in cap_res and three_letter not in oneletter:
