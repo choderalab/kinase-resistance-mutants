@@ -1,16 +1,17 @@
 # Script to renumber PDBs in the Hauser benchmark set
 # Steven K. Albanese, with copious help from Stack overflow posts by Gordon Wells and Maximillian Peters
 
-from Bio import AlignIO,SeqIO,ExPASy,SwissProt
+import argparse
+import os
+from glob import glob
+
+from Bio import AlignIO, SeqIO, ExPASy, SwissProt
+from Bio import PDB
+from Bio import pairwise2
+from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.Alphabet import IUPAC
-from Bio import pairwise2
 from Bio.SubsMat.MatrixInfo import blosum62
-from glob import glob
-import os
-from Bio import PDB
-import argparse
 
 # Skeleton command line interface in case that is the easiest way to use the script
 parser = argparse.ArgumentParser(description="Automated script to search PDB by chemical ID")
@@ -18,14 +19,13 @@ parser.add_argument('--input', required=True, dest='input_dir',
                     help='The path to the PDBs you want renumbered')
 parser.add_argument('--output', required=True, dest='output_dir',
                     help='The path to where renumbered PDBs should be saved')
-args = parser.parse_args()
 
+args = parser.parse_args()
 
 cap = True  # Set this to false if there are no cap residues
 
 
 def renumber(file_name, output_dir, accession_id):
-
     # read in PDB
     pdb_io = PDB.PDBIO()
 
@@ -36,8 +36,8 @@ def renumber(file_name, output_dir, accession_id):
 
     # PDB name will point to the actual file
     pdb_name = file_name
-    parser = PDB.PDBParser(PERMISSIVE=1)
-    structure = parser.get_structure(id_name, pdb_name)
+    pdbparser = PDB.PDBParser(PERMISSIVE=1)
+    structure = pdbparser.get_structure(id_name, pdb_name)
 
     # Extract sequence from PDB file and skip cap residues (which won't align properly)
     oneletter = {
@@ -49,7 +49,6 @@ def renumber(file_name, output_dir, accession_id):
     }
 
     cap_res = ['NME', 'NMA', 'ACE']
-
 
     pdbseq_list = []
     for residue in structure.get_residues():
@@ -63,14 +62,14 @@ def renumber(file_name, output_dir, accession_id):
     pdbseq_str = ''.join(pdbseq_list)
 
     # Write out FASTA file for PDB structure
-    alnPDBseq=SeqRecord(Seq(pdbseq_str,IUPAC.protein),id=file_name)
+    alnPDBseq = SeqRecord(Seq(pdbseq_str, IUPAC.protein), id=file_name)
     SeqIO.write(alnPDBseq, "%s.fasta" % file_name, "fasta")
 
     # Retrieve reference sequence
     accession = accession_id  # eventually this can be specified by user somehow (or read in from the csv file)
     handle = ExPASy.get_sprot_raw(accession)
     swissseq = SwissProt.read(handle)
-    refseq=SeqRecord(Seq(swissseq.sequence, IUPAC.protein), id=accession)
+    refseq = SeqRecord(Seq(swissseq.sequence, IUPAC.protein), id=accession)
     SeqIO.write(refseq, "%s.fasta" % accession, "fasta")
 
     # Align using Biopython's EMBOSS needle wrapper
@@ -108,7 +107,7 @@ def renumber(file_name, output_dir, accession_id):
                 if residue.id != tuple(res_id):
                     residue.id = tuple(res_id)
                 residue.resname = 'ACE'
-            elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
+            elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to last residue number
                 res_id = list(residue.id)
                 res_id[1] = new_resnums[-1]
                 if residue.id != tuple(res_id):
@@ -130,7 +129,7 @@ def renumber(file_name, output_dir, accession_id):
                 if residue.id != tuple(res_id):
                     residue.id = tuple(res_id)
                 residue.resname = 'ACE'
-            elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to 1 after the end of the alignment
+            elif three_letter == 'NME' or three_letter == 'NMA':  # Set resid for NME or NMA to last residue number
                 res_id = list(residue.id)
                 res_id[1] = new_resnums[-1]
                 if residue.id != tuple(res_id):
@@ -138,7 +137,7 @@ def renumber(file_name, output_dir, accession_id):
             elif three_letter not in cap_res and three_letter not in oneletter:
                 pass
             else:
-                if cap == True:
+                if cap:
                     index = i - 1
                 else:
                     index = i
@@ -162,6 +161,6 @@ if __name__ == "__main__":
     if not os.path.exists(out_path):
         os.makedirs(out_path)
 
-    files = glob(os.path.join(in_path,'*.pdb'))
+    files = glob(os.path.join(in_path, '*.pdb'))
     for file in files:
         renumber(file, out_path, "P00519")
