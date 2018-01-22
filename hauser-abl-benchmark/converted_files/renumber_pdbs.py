@@ -134,7 +134,6 @@ def renumber(file_name, output_dir, accession_id):
                 res_id[1] = new_resnums[-1]
                 if residue.id != tuple(res_id):
                     residue.id = tuple(res_id)
-                residue.resname = 'NME'
             elif three_letter not in cap_res and three_letter not in oneletter:
                 pass
             else:
