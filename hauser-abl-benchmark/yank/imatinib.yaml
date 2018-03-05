@@ -1,0 +1,68 @@
+options:
+  minimize: yes
+  verbose: yes
+  output_dir: mutants/imatinib
+  number_of_iterations: 5000
+  nsteps_per_iteration: 2500
+  temperature: 300*kelvin
+  pressure: 1*atmosphere
+  timestep: 2*femtoseconds 
+  processes_per_experiment: 1
+  switch_experiment_interval: 100
+  checkpoint_interval: 100
+  resume_setup: yes
+  resume_simulation: yes
+
+molecules:
+  cAbl:
+    filepath: input/cAbl-imatinib_nowat-uniprot.pdb
+    strip_protons: yes 
+    pdbfixer:
+      apply_mutations:
+        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        chain_id: B
+  cAbl-wat:
+    filepath: input/cAbl-imatinib_wat-uniprot.pdb
+    strip_protons: yes 
+    pdbfixer:
+      apply_mutations:
+        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        chain_id: B
+  imatinib:
+    filepath: input/imatinib.mol2
+    openeye:
+      quacpac: am1-bcc
+    antechamber:
+      charge_method: null
+
+solvents:
+  pme:
+    nonbonded_method: PME
+    switch_distance: 11*angstroms
+    nonbonded_cutoff: 12*angstroms
+    ewald_error_tolerance: 1.0e-4
+    clearance: 9*angstroms
+    positive_ion: Na+
+    negative_ion: Cl-
+    solvent_model: tip4pew
+
+systems:
+  cAbl-imatinib:
+    receptor: cAbl
+    ligand: imatinib
+    solvent: pme
+    leap:
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+
+protocols:
+  absolute-binding:
+    complex:
+      alchemical_path: auto
+    solvent:
+      alchemical_path: auto
+
+experiments:
+  system: cAbl-imatinib
+  protocol: absolute-binding
+  restraint:
+    type: Harmonic
