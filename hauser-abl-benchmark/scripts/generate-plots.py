@@ -12,7 +12,7 @@ from netCDF4 import Dataset
 #from yank.multistate import MultiStateReporter
 
 def generate_plots(prefix):
-    filename = 'explicit-2fs/experiments/%s/complex.nc' % prefix
+    filename = 'yank-sams//mutants/imatinib/experiments/%s/complex.nc' % prefix
     print(filename)
     if not os.path.exists(filename):
         return
@@ -56,5 +56,11 @@ def generate_plots(prefix):
             pdf.savefig()  # saves the current figure into a pdf page
             plt.close()
 
-for index in range(12):
-    generate_plots('cmethingesinglehinge%d' % index)
+
+list_of_mutants = ['M244V', 'L248R', 'L248V', 'G250E', 'Y253F', 'E255K', 'E255V', 'V299L', 'T315A', 'T315I', 'F317C', 'F317I', 'F317L', 'F317V', 'M351T', 'E355A', 'F359C', 'F359I', 'F359V', 'H396R', 'E459K']
+for mut in list_of_mutants:
+    index = 'cAblimatinibcAbl' + mut
+    try:
+        generate_plots(index)
+    except:
+        pass
