@@ -1,7 +1,7 @@
 options:
   minimize: yes
   verbose: yes
-  output_dir: mutants/
+  output_dir: mutants-sdf/
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
@@ -83,49 +83,49 @@ molecules:
         chain_id: A
 
   imatinib:
-    filepath: input/imatinib.mol2
+    filepath: input/imatinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   axitinib:
-    filepath: input/axitinib.mol2
+    filepath: input/axitinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   bosutinib:
-    filepath: input/bosutinib.mol2
+    filepath: input/bosutinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   dasatinib:
-    filepath: input/dasatinib.mol2
+    filepath: input/dasatinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   nilotinib:
-    filepath: input/nilotinib.mol2
+    filepath: input/nilotinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   ponatinib:
-    filepath: input/ponatinib.mol2
+    filepath: input/ponatinib.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   erlotinib:
-    filepath: input/erlotinib_nowat.mol2
+    filepath: input/erlotinib_nowat.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   gefitinib:
-    filepath: input/gefitinib_nowat.mol2
+    filepath: input/gefitinib_nowat.sdf
     openeye:
       quacpac: am1-bcc
     antechamber:
@@ -151,13 +151,16 @@ samplers:
 solvents:
   pme:
     nonbonded_method: PME
-    switch_distance: 11*angstroms
-    nonbonded_cutoff: 12*angstroms
+    #switch_distance: 11*angstroms
+    #nonbonded_cutoff: 12*angstroms
+    switch_distance: 9*angstroms
+    nonbonded_cutoff: 10*angstroms
     ewald_error_tolerance: 1.0e-4
-    clearance: 9*angstroms
+    #clearance: 9*angstroms
+    clearance: 6*angstroms
     positive_ion: Na+
     negative_ion: Cl-
-    solvent_model: tip4pew
+    solvent_model: tip3p
 
 systems:
   cAbl-imatinib:
@@ -165,49 +168,57 @@ systems:
     ligand: imatinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-axitinib:
     receptor: cAbl-axitinib
     ligand: axitinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-bosutinib:
     receptor: cAbl-bosutinib
     ligand: bosutinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-dasatinib:
     receptor: cAbl-dasatinib
     ligand: dasatinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-nilotinib:
     receptor: cAbl-nilotinib
     ligand: nilotinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-ponatinib:
     receptor: cAbl-ponatinib
     ligand: ponatinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-gefitinib:
     receptor: cAbl-gefitinib
     ligand: gefitinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-erlotinib:
     receptor: cAbl-erlotinib
     ligand: erlotinib
     solvent: pme
     leap:
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
 
 protocols:
   absolute-binding:
