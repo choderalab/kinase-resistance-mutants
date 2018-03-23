@@ -24,14 +24,14 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: B
   cAbl-wat:
     filepath: input/cAbl-imatinib_wat-uniprot.pdb
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: B
   imatinib:
     filepath: input/imatinib.mol2

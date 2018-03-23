@@ -4,7 +4,7 @@
 #BSUB -e %J.err
 #BSUB -o %J.out
 #BSUB -q gpuqueue
-#BSUB -n 10 -R "rusage[mem=8]"
+#BSUB -n 20 -R "rusage[mem=8]"
 #BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=yes"
 #BSUB -m 'lt-gpu'
 #BSUB -J "imatinib-test"
