@@ -12,6 +12,7 @@ options:
   integrator_splitting: 'V R R R O R R R V' # TODO: Remove me when MCMC hooks are in
   hydrogen_mass: 3.0 * amu
   checkpoint_interval: 200
+  precision: single
 
   #annihilate_electrostatics: yes
   #annihilate_sterics: no
@@ -145,7 +146,7 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-        number_of_iterations: 1
+        number_of_iterations: 100
         gamma0: 10.0
 
 solvents:
