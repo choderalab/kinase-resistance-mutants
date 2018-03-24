@@ -1,17 +1,17 @@
 options:
   minimize: yes
   verbose: yes
-  output_dir: mutants-sdf/
+  output_dir: mutants-sdf2/
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
   resume_simulation: yes
   processes_per_experiment: 1
-  nsteps_per_iteration: 1250 # TODO: Remove me when MCMC hooks are in
-  timestep: 4.0*femtosecond # TODO: Remove me when MCMC hooks are in
+  nsteps_per_iteration: 500 # TODO: Remove me when MCMC hooks are in
+  timestep: 1.0*femtosecond # TODO: Remove me when MCMC hooks are in
   integrator_splitting: 'V R R R O R R R V' # TODO: Remove me when MCMC hooks are in
   hydrogen_mass: 3.0 * amu
-  checkpoint_interval: 200
+  checkpoint_interval: 10
 
   #annihilate_electrostatics: yes
   #annihilate_sterics: no
@@ -135,9 +135,9 @@ mcmc_moves:
     langevin:
         type: LangevinSplittingDynamicsMove
         # Not used yet
-        timestep: 4.0*femtosecond
+        timestep: 1.0*femtosecond
         splitting: 'V R R R O R R R V'
-        n_steps: 1250
+        n_steps: 500
 
 samplers:
     sams:
@@ -145,7 +145,7 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-        number_of_iterations: 1
+        number_of_iterations: 10
         gamma0: 10.0
 
 solvents:
