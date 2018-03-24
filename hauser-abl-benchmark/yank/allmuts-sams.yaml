@@ -1,16 +1,16 @@
 options:
-  minimize: yes
+  minimize: FIRE
   verbose: yes
-  output_dir: mutants-sdf2/
+  output_dir: mutants-fire/
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
   resume_simulation: yes
   processes_per_experiment: 1
-  nsteps_per_iteration: 500 # TODO: Remove me when MCMC hooks are in
-  timestep: 1.0*femtosecond # TODO: Remove me when MCMC hooks are in
-  integrator_splitting: 'V R R R O R R R V' # TODO: Remove me when MCMC hooks are in
-  hydrogen_mass: 3.0 * amu
+  #nsteps_per_iteration: 500 # TODO: Remove me when MCMC hooks are in
+  #timestep: 1.0*femtosecond # TODO: Remove me when MCMC hooks are in
+  #integrator_splitting: 'V R R R O R R R V' # TODO: Remove me when MCMC hooks are in
+  #hydrogen_mass: 3.0 * amu
   checkpoint_interval: 10
 
   #annihilate_electrostatics: yes
@@ -23,7 +23,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: B
 
   cAbl-nilotinib:
@@ -31,7 +31,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   cAbl-axitinib:
@@ -39,7 +39,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: B
 
   cAbl-bosutinib:
@@ -47,7 +47,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   cAbl-dasatinib:
@@ -55,7 +55,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   cAbl-ponatinib:
@@ -63,7 +63,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   cAbl-gefitinib:
@@ -71,7 +71,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   cAbl-erlotinib:
@@ -79,53 +79,53 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
 
   imatinib:
-    filepath: input/imatinib.sdf
+    filepath: input/imatinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   axitinib:
-    filepath: input/axitinib.sdf
+    filepath: input/axitinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   bosutinib:
-    filepath: input/bosutinib.sdf
+    filepath: input/bosutinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   dasatinib:
-    filepath: input/dasatinib.sdf
+    filepath: input/dasatinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   nilotinib:
-    filepath: input/nilotinib.sdf
+    filepath: input/nilotinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   ponatinib:
-    filepath: input/ponatinib.sdf
+    filepath: input/ponatinib.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   erlotinib:
-    filepath: input/erlotinib_nowat.sdf
+    filepath: input/erlotinib_nowat.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
       charge_method: null
   gefitinib:
-    filepath: input/gefitinib_nowat.sdf
+    filepath: input/gefitinib_nowat.mol2
     openeye:
       quacpac: am1-bcc
     antechamber:
@@ -135,9 +135,9 @@ mcmc_moves:
     langevin:
         type: LangevinSplittingDynamicsMove
         # Not used yet
-        timestep: 1.0*femtosecond
+        timestep: 4.0*femtosecond
         splitting: 'V R R R O R R R V'
-        n_steps: 500
+        n_steps: 1250
 
 samplers:
     sams:
@@ -145,11 +145,7 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-<<<<<<< HEAD
         number_of_iterations: 10
-=======
-        number_of_iterations: 100
->>>>>>> 2632d78ebec3fdfd8d53db8c9c91c5460d0b0298
         gamma0: 10.0
 
 solvents:
@@ -168,7 +164,7 @@ solvents:
 
 systems:
   cAbl-imatinib:
-    receptor: cAbl-axitinib
+    receptor: cAbl-imatinib
     ligand: imatinib
     solvent: pme
     leap:
