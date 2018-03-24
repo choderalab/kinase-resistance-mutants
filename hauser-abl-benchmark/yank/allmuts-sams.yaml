@@ -99,8 +99,8 @@ molecules:
       charge_method: null
   dasatinib:
     filepath: input/dasatinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   nilotinib:
