@@ -145,7 +145,11 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
+<<<<<<< HEAD
         number_of_iterations: 10
+=======
+        number_of_iterations: 100
+>>>>>>> 2632d78ebec3fdfd8d53db8c9c91c5460d0b0298
         gamma0: 10.0
 
 solvents:
