@@ -17,4 +17,4 @@ module load cudatoolkit
 export OPENMM_CUDA_COMPILER=`which nvcc`
 # Run only one job to set things up
 export OE_LICENSE="/lustre/atlas/scratch/jchodera1/chm126/.openeye/oe_license.txt"
-aprun -n $PBS_NUM_NODES yank script --yaml=allmuts-sams-titan.yaml
+aprun -n $PBS_NUM_NODES yank script --yaml=allmuts-sams.yaml

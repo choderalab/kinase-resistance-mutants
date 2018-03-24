@@ -1,16 +1,13 @@
 options:
-  minimize: FIRE
+  minimize: yes
   verbose: yes
-  output_dir: mutants-fire/
+  output_dir: mutants/
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
   resume_simulation: yes
   processes_per_experiment: 1
-  #nsteps_per_iteration: 500 # TODO: Remove me when MCMC hooks are in
-  #timestep: 1.0*femtosecond # TODO: Remove me when MCMC hooks are in
-  #integrator_splitting: 'V R R R O R R R V' # TODO: Remove me when MCMC hooks are in
-  #hydrogen_mass: 3.0 * amu
+  hydrogen_mass: 3.0 * amu
   checkpoint_interval: 10
 
   #annihilate_electrostatics: yes
@@ -84,20 +81,20 @@ molecules:
 
   imatinib:
     filepath: input/imatinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   axitinib:
     filepath: input/axitinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   bosutinib:
     filepath: input/bosutinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   dasatinib:
@@ -108,33 +105,32 @@ molecules:
       charge_method: null
   nilotinib:
     filepath: input/nilotinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   ponatinib:
     filepath: input/ponatinib.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   erlotinib:
     filepath: input/erlotinib_nowat.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
   gefitinib:
     filepath: input/gefitinib_nowat.mol2
-    openeye:
-      quacpac: am1-bcc
+    #openeye:
+    #  quacpac: am1-bcc
     antechamber:
       charge_method: null
 
 mcmc_moves:
     langevin:
         type: LangevinSplittingDynamicsMove
-        # Not used yet
         timestep: 4.0*femtosecond
         splitting: 'V R R R O R R R V'
         n_steps: 1250
@@ -145,7 +141,7 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-        number_of_iterations: 10
+        number_of_iterations: 0
         gamma0: 10.0
 
 solvents:
