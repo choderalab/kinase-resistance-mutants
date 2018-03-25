@@ -1,7 +1,7 @@
 options:
   minimize: yes
   verbose: yes
-  output_dir: mutants/
+  output_dir: mutants-mpi/
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
@@ -141,7 +141,7 @@ samplers:
         mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-        number_of_iterations: 0
+        number_of_iterations: 10
         gamma0: 10.0
 
 solvents:
