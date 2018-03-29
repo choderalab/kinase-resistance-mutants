@@ -2,7 +2,7 @@ options:
   minimize: yes
   minimize_max_iterations: 500
   verbose: yes
-  output_dir: mutants-mpi/
+  output_dir: mutants-200
   pressure: 1*atmosphere
   #switch_experiment_interval: 200
   resume_setup: yes
@@ -10,7 +10,7 @@ options:
   processes_per_experiment: 1
   hydrogen_mass: 3.0 * amu
   checkpoint_interval: 50
-  platform: OpenCL
+  max_n_contexts: 6
 
   #annihilate_electrostatics: yes
   #annihilate_sterics: no
@@ -131,16 +131,22 @@ molecules:
       charge_method: null
 
 mcmc_moves:
+    langevin_openmm:
+        type: LangevinDynamicsMove
+        timestep: 4.0*femtosecond
+        n_steps: 1250
+        reassign_velocities: no
     langevin:
         type: LangevinSplittingDynamicsMove
         timestep: 4.0*femtosecond
         splitting: 'V R R R O R R R V'
         n_steps: 1250
+        reassign_velocities: no
 
 samplers:
     sams:
         type: SAMSSampler
-        mcmc_moves: langevin
+        mcmc_moves: langevin_openmm
         state_update_scheme: global-jump
         flatness_threshold: 2.0
         number_of_iterations: 200
@@ -151,8 +157,8 @@ solvents:
     nonbonded_method: PME
     #switch_distance: 11*angstroms
     #nonbonded_cutoff: 12*angstroms
-    switch_distance: 8*angstroms
-    nonbonded_cutoff: 9*angstroms
+    switch_distance: 9*angstroms
+    nonbonded_cutoff: 10*angstroms
     ewald_error_tolerance: 1.0e-4
     #clearance: 9*angstroms
     clearance: 6*angstroms

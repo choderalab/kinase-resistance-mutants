@@ -24,4 +24,4 @@ module add cray-mpich
 export OE_LICENSE="/lustre/atlas/scratch/jchodera1/chm126/.openeye/oe_license.txt"
 #aprun -n $PBS_NUM_NODES yank script --yaml=allmuts-sams.yaml --jobid="ALPS_APP_PE" --njobs="PBS_NUM_NODES"
 aprun -n $PBS_NUM_NODES yank script --yaml=allmuts-sams.yaml
-#aprun -n $PBS_NUM_NODES python hellompi.py
+#aprun -n $PBS_NUM_NODES python benchmark.py
