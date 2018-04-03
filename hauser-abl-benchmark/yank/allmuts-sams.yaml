@@ -1,16 +1,16 @@
 options:
   minimize: yes
-  minimize_max_iterations: 500
-  verbose: yes
-  output_dir: mutants-304
+  minimize_max_iterations: 1000
+  verbose: no
+  output_dir: mutants
   pressure: 1*atmosphere
-  #switch_experiment_interval: 200
+  switch_experiment_interval: 500
   resume_setup: yes
   resume_simulation: yes
   processes_per_experiment: 1
   hydrogen_mass: 3.0 * amu
   checkpoint_interval: 50
-  max_n_contexts: 6
+  max_n_contexts: 10
 
   #annihilate_electrostatics: yes
   #annihilate_sterics: no
@@ -22,8 +22,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: B
 
   abl-nil:
@@ -31,8 +31,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   abl-axi:
@@ -40,8 +40,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: B
 
   abl-bos:
@@ -49,8 +49,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   abl-das:
@@ -58,8 +58,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   abl-pon:
@@ -67,8 +67,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   abl-gef:
@@ -76,8 +76,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   abl-erl:
@@ -85,8 +85,8 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
-        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
+        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
+#        mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, G250R, G251C, Y253F, G254R, E255K, E255V, E282Q, E292D, I293M, V299L, P309S, Y312C, T315A, T315I, F317C, F317I, F317L, F317V, R328K, M351T, E355A, F359C, F359I, F359V, F382L, G390W, H396R, I403T, Y440H, E453K, E453Q, E459K, D482E]
         chain_id: A
 
   imatinib:
@@ -157,22 +157,19 @@ samplers:
         mcmc_moves: langevin_openmm
         state_update_scheme: global-jump
         flatness_threshold: 2.0
-        number_of_iterations: 200
+        number_of_iterations: 50000
         gamma0: 10.0
 
 solvents:
   pme:
     nonbonded_method: PME
-    #switch_distance: 11*angstroms
-    #nonbonded_cutoff: 12*angstroms
-    switch_distance: 9*angstroms
-    nonbonded_cutoff: 10*angstroms
+    switch_distance: 11*angstroms
+    nonbonded_cutoff: 12*angstroms
     ewald_error_tolerance: 1.0e-4
-    #clearance: 9*angstroms
-    clearance: 6*angstroms
+    clearance: 9*angstroms
     positive_ion: Na+
     negative_ion: Cl-
-    solvent_model: tip3p
+    solvent_model: tip4pew
 
 systems:
   cAbl-imatinib:
@@ -180,57 +177,57 @@ systems:
     ligand: imatinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-axitinib:
     receptor: abl-axi
     ligand: axitinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-bosutinib:
     receptor: abl-bos
     ligand: bosutinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-dasatinib:
     receptor: abl-das
     ligand: dasatinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-nilotinib:
     receptor: abl-nil
     ligand: nilotinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-ponatinib:
     receptor: abl-pon
     ligand: ponatinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-gefitinib:
     receptor: abl-gef
     ligand: gefitinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
   cAbl-erlotinib:
     receptor: abl-erl
     ligand: erlotinib
     solvent: pme
     leap:
-      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
-      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
+      parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew, leaprc.nme]
+      #parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip3p, leaprc.nme]
 
 protocols:
   absolute-binding:
@@ -245,7 +242,7 @@ protocols:
 
 experiments:
   sampler: sams
-  system: !Combinatorial [cAbl-imatinib, cAbl-axitinib, cAbl-bosutinib, cAbl-dasatinib, cAbl-imatinib, cAbl-nilotinib, cAbl-ponatinib, cAbl-erlotinib, cAbl-gefitinib]
+  system: !Combinatorial [cAbl-imatinib, cAbl-axitinib, cAbl-bosutinib, cAbl-dasatinib, cAbl-nilotinib, cAbl-ponatinib, cAbl-gefitinib, cAbl-erlotinib]
   protocol: absolute-binding
   restraint:
-    type: Boresch
+    type: !Combinatorial [Boresch, Harmonic]

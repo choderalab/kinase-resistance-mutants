@@ -3,7 +3,8 @@
 #PBS -A chm126
 #PBS -N resistance
 #PBS -j oe
-#PBS -l walltime=1:00:00,nodes=200
+##PBS -q debug
+#PBS -l walltime=6:00:00,nodes=352
 #PBS -l gres=atlas1%atlas2
 #PBS -l feature=gpudefault
 #    End PBS directives and begin shell commands

@@ -6,7 +6,7 @@ import sys
 filename = sys.argv[1]
 times = np.loadtxt(filename)
 nodes_reporting = len(times)
-nodes_requested = 200
+nodes_requested = 352
 print(times)
 mean_time = times.mean()
 ns_per_day = 0.005 / mean_time * 24 * 60 * 60
