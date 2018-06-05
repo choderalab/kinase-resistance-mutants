@@ -24,7 +24,7 @@ molecules_to_dock = ['C5=C(C1=CN=CC=C1)N=C(NC2=C(C=CC(=C2)NC(C3=CC=C(C=C3)CN4CCN
 
 for pdb in pdbs_list:
     cocrystal = pdb.split('-')[1].split('_')[0]
-    if cocrystal == 'gefitinib' or 'erlotinib':
+    if cocrystal == 'gefitinib' or cocrystal ==  'erlotinib':
         cocrystal = pdb.split('-')[1].split('.')[0]
     cocrystal_path = os.path.join(ligand_directory, cocrystal + '.mol2')
     receptor_path = os.path.join(pdb_directory, pdb)
