@@ -1,0 +1,8 @@
+INPUT_FILE_NAME   ligprep_fda.maegz
+OUT_MAE   ligprep_fda-out.maegz
+FORCE_FIELD   16
+PH   8.0
+EPIK   yes
+DETERMINE_CHIRALITIES   no
+IGNORE_CHIRALITIES   no
+NUM_STEREOISOMERS   32
