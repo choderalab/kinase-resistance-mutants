@@ -1,0 +1,37 @@
+Glide version 78011 (mmshare version 41011)
+Copyright (c) Schrodinger, LLC.
+All Rights Reserved.
+
+[running at reduced cpu priority]
+--------------------------------------------------------------------------------
+JobId          : lski1985-0-5ada2cb3
+Name           : grid-nilotinib
+Program        : Glide
+MMshareExec    : /opt/schrodinger/suites2018-1/mmshare-v4.1/bin/Darwin-x86_64
+Host           : lski1985.mskcc.org
+Dir            : /Users/albaness/github/kinase-resistance-mutants/fda-approved/fda-approved.prj/grid-nilotinib
+HostEntry      : localhost
+JobHost        : lski1985.mskcc.org
+JobDir         : /Users/albaness/.schrodinger/tmp/grid-nilotinib
+JobMMshareExec : /opt/schrodinger/suites2018-1/mmshare-v4.1/bin/Darwin-x86_64
+Commandline    : /opt/schrodinger/suites2018-1/glide grid-nilotinib.in -OVERWRITE -HOST localhost -PROJ /Users/albaness/github/kinase-resistance-mutants/fda-approved/fda-approved.prj -DISP ignore -VIEWNAME glide_gridgen_gui.GridGenPanel -TMPLAUNCHDIR -ATTACHED
+StartTime      : 2018-04-20-14:08:51
+--------------------------------------------------------------------------------
+
+[running at reduced cpu priority]
+Calling OPLS3 atomtyping ...
+Finished parameter assignment
+ VdW radii of protein atoms scaled by    1.00000000000000     
+ Charge cutoff for polarity  0.250000000000000     
+  Receptor setup: (nsites, nx, ny, nz, bsize)=(         125 ,           32 , 
+          32 ,           32 ,    1.00000000000000      ).
+ Screening setup finished.
+ DOCKMAIN: getting receptor.
+  DOCKMAIN after grid: (nx, ny, nz) = (          88 ,           88 , 
+          88 ).
+Creating output grid archive 'grid-nilotinib.zip'
+
+Exiting Glide
+Date: Friday, April 20 2018, at 14:11:45 EDT
+CPU time (s): 90.4 user, 4.2 system, 131.5 real
+Total elapsed time = 132 seconds (2 minutes, 12 seconds)
