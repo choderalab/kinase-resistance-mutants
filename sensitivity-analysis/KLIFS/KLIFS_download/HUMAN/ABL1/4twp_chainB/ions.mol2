@@ -1,0 +1,18 @@
+@<TRIPOS>MOLECULE
+4twp.B
+3 0 3 0 0 
+SMALL
+USER_CHARGES
+
+
+@<TRIPOS>ATOM
+  1 NI     -16.5525    30.2259    26.9077 Ni    1 NI   3.0000 
+  2 NI     -16.6127    30.9788    30.7357 Ni    2 NI   3.0000 
+  3 NA       9.3293    17.2287    20.2193 Na    3 NA   1.0000 
+@<TRIPOS>BOND
+@<TRIPOS>SUBSTRUCTURE
+  1 NI   1 GROUP 4 B **** 0
+  2 NI   2 GROUP 4 B **** 0
+  3 NA   3 GROUP 4 B **** 0
+
+# MOE 2012.10 (io_trps.svl 2012.10)
