@@ -65,14 +65,14 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
         rmsd_restraint = RMSD()
 
         # Determine automatically the parameters.
-        rmsd_restraint.determine_missing_parameters(self.thermodynamic_state, self.sampler_state,
+        rmsd_restraint.determine_missing_parameters(self.thermodynamic_state, self.sampler_states,
                                                     self.topography)
         rmsd_restraint.restrain_state(self.thermodynamic_state)
 
         # Isolate restraint Force object.
         system = self.thermodynamic_state.system
         for restraint_force in system.getForces():
-            if isinstance(restraint_force, openmm.RMSDForce):
+            if isinstance(restraint_force, openmm.CustomCVForce):
                 break
 
         # Modify the restraint force to be on only in the middle of the protocol.
@@ -117,7 +117,7 @@ def main(yaml_script_path, job_id, n_jobs):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Run YANK with two restraints and starting from the decoupled state.')
-    parser.add_argument(['-y', '--yaml'], type=str, dest='yaml_script_path',
+    parser.add_argument('-y', '--yaml', type=str, dest='yaml_script_path',
                         help='Path to the YAML script specifying options and/or how to set up and run the experiment.')
     parser.add_argument('--jobid', type=int, dest='job_id', default=None, help='Identifier for the job: 1 <= jobid <= njobs.')
     parser.add_argument('--njobs', type=int, dest='n_jobs', default=None, help='Total number of parallel executions.')
