@@ -41,8 +41,9 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
 
     def create_alchemical_phase(self):
         """Override parent method to add a second restraint and set initial thermodynamic state."""
-        # Add a second RMSD restraint.
-        self._add_rmsd_restraint()
+        # Add a second RMSD restraint if this is the complex phase.
+        if self.restraint is not None:
+            self._add_rmsd_restraint()
 
         # Create the alchemical phase.
         alchemical_phase = super(TwoRestraintsPhaseFactory, self).create_alchemical_phase()
