@@ -258,4 +258,4 @@ experiments:
   #system: cAbl-imatinib
   protocol: absolute-binding
   restraint:
-    type: !Combinatorial [Boresch, Harmonic]
+    type: !Combinatorial [PeriodicTorsionBoresch, Harmonic]

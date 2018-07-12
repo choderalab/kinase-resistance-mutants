@@ -10,8 +10,13 @@
 # Capture output and error
 #PBS -j oe
 #
-# Production limit is six hours, but jobs can be chained
-#PBS -l walltime=1:00:00,nodes=64
+# Limits for titan:
+##PBS -l walltime=24:00:00,nodes=11250
+##PBS -l walltime=24:00:00,nodes=11249
+##PBS -l walltime=12:00:00,nodes=3749
+#PBS -l walltime=12:00:00,nodes=3352
+##PBS -l walltime=6:00:00,nodes=312
+##PBS -l walltime=2:00:00,nodes=125
 #
 # Use atlas scratch storage
 #PBS -l gres=atlas1%atlas2
@@ -22,15 +27,18 @@
 #    End PBS directives and begin shell commands
 
 # MODIFY ME: Change HOME to point to working directory on atlas scratch
-export HOME=/lustre/atlas/scratch/jchodera1/chm126
+#export HOME=/lustre/atlas/scratch/jchodera1/chm126
 
 # Set up miniconda; LD_LIBRARY_PATH must be manually set because of cray weirdness when installing conda
-export MINICONDA="$HOME/miniconda3"
-export PATH="$MINICONDA/bin:$PATH"
-export LD_LIBRARY_PATH=$MINICONDA/lib:$LD_LIBRARY_PATH
+#export MINICONDA="$HOME/miniconda3"
+#export PATH="$MINICONDA/bin:$PATH"
+#export LD_LIBRARY_PATH=$MINICONDA/lib:$LD_LIBRARY_PATH
+
+env
+
+which python
 
 # MODIFY ME: Change directory to working directory on atlas scratch
-#cd $HOME/kinase-resistance-mutants/hauser-abl-benchmark/yank/
 cd /lustre/atlas/scratch/jchodera1/chm126/kinase-resistance-mutants/sensitivity-analysis/yank
 
 # Configure CUDA
