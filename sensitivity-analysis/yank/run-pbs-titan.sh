@@ -47,4 +47,4 @@ module add cray-mpich
 export OE_LICENSE="/lustre/atlas/scratch/jchodera1/chm126/.openeye/oe_license.txt"
 
 # Run YANK, one MPI process per node
-aprun -n $PBS_NUM_NODES -N 1 -d 16 yank script --yaml=sensitivity-titan.yaml
+aprun -n $PBS_NUM_NODES -N 1 -d 16 python run_yank.py --yaml=sensitivity-titan.yaml
