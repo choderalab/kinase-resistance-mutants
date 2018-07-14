@@ -22,7 +22,7 @@ molecules:
 
   imatinib:
     filepath: input/ligands-posed-imatinib.sdf
-    select: [0,1]
+    select: !Combinatorial [0,1]
     openeye:
       quacpac: am1-bcc
     antechamber:
