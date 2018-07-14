@@ -14,7 +14,8 @@
 ##PBS -l walltime=24:00:00,nodes=11250
 ##PBS -l walltime=24:00:00,nodes=11249
 ##PBS -l walltime=12:00:00,nodes=3749
-#PBS -l walltime=12:00:00,nodes=3352
+##PBS -l walltime=12:00:00,nodes=3352
+#PBS -l walltime=1:00:00,nodes=3352
 ##PBS -l walltime=6:00:00,nodes=312
 ##PBS -l walltime=2:00:00,nodes=125
 #

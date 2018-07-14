@@ -8,6 +8,7 @@ options:
   processes_per_experiment: 1
   hydrogen_mass: 3.0 * amu
   checkpoint_interval: 10
+  switch_experiment_interval: 100
 
   #annihilate_electrostatics: yes
   #annihilate_sterics: no
@@ -157,8 +158,8 @@ samplers:
         type: SAMSSampler
         mcmc_moves: langevin
         state_update_scheme: global-jump
-        flatness_threshold: 2.0
-        number_of_iterations: 0
+        flatness_threshold: 10.0
+        number_of_iterations: 40000
         gamma0: 10.0
     sams-ligand-mcmc:
         type: SAMSSampler
@@ -171,13 +172,13 @@ samplers:
 solvents:
   pme:
     nonbonded_method: PME
-    #switch_distance: 11*angstroms
-    #nonbonded_cutoff: 12*angstroms
-    switch_distance: 9*angstroms
-    nonbonded_cutoff: 10*angstroms
+    switch_distance: 11*angstroms
+    nonbonded_cutoff: 12*angstroms
+    #switch_distance: 9*angstroms
+    #nonbonded_cutoff: 10*angstroms
     ewald_error_tolerance: 1.0e-4
-    #clearance: 9*angstroms
-    clearance: 6*angstroms
+    clearance: 9*angstroms
+    #clearance: 6*angstroms
     positive_ion: Na+
     negative_ion: Cl-
     solvent_model: tip3p
@@ -255,7 +256,6 @@ protocols:
 experiments:
   sampler: sams-ligand-mcmc
   system: !Combinatorial [cAbl-imatinib, cAbl-axitinib, cAbl-bosutinib, cAbl-dasatinib, cAbl-imatinib, cAbl-nilotinib, cAbl-ponatinib, cAbl-erlotinib, cAbl-gefitinib]
-  #system: cAbl-imatinib
   protocol: absolute-binding
   restraint:
     type: !Combinatorial [PeriodicTorsionBoresch, Harmonic]
