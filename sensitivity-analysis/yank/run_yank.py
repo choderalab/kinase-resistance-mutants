@@ -84,7 +84,9 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
         goes from 0.0 to 1.0.
         """
         # Add RMSD restraint force on top of the YAML-specified restraint.
-        rmsd_restraint = RMSD()
+        ligand_dsl = '(mass > 1.5)'
+        receptor_dsl = '((resid 272) or (resid 316) or (resid 322) or (resid 379)) and (name CA)'
+        rmsd_restraint = RMSD(restrained_receptor_atoms=receptor_dsl, restrained_ligand_atoms=ligand_dsl)
 
         # Determine automatically the parameters.
         rmsd_restraint.determine_missing_parameters(self.thermodynamic_state, self.sampler_states,
