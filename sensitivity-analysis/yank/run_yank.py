@@ -54,6 +54,28 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
 
         return alchemical_phase
 
+    def initialize_alchemical_phase(self):
+        """Override parent method to skip the fully interacting state minimization."""
+        # Turn off general minimization.
+        minimize = self.options['minimize']
+        if minimize is True:
+            # This hack is not compatible if we also want to randomize
+            # the ligand or equilibrate after minimization.
+            assert self.options['randomize_ligand'] is False
+            assert self.options['number_of_equilibration_iterations'] <= 0
+            self.options['minimize'] = False
+
+        # Run usual method without minimization.
+        alchemical_phase = super(TwoRestraintsPhaseFactory, self).initialize_alchemical_phase()
+
+        # Skip fully interacting state minimization and minimize replicas.
+        if minimize:
+            tolerance = self.options['minimize_tolerance']
+            max_iterations = self.options['minimize_max_iterations']
+            alchemical_phase._sampler.minimize(tolerance=tolerance, max_iterations=max_iterations)
+
+        return alchemical_phase
+
     def _add_rmsd_restraint(self):
         """Add a RMSD restraint to the reference ThermodynamicState.
 
