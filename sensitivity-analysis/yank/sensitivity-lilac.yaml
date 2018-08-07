@@ -1,5 +1,5 @@
 options:
-  minimize: yes
+  minimize: no
   verbose: yes
   output_dir: mutants/
   pressure: 1*atmosphere
