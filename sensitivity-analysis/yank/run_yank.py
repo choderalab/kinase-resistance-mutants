@@ -22,7 +22,7 @@ The script assumes
 
 import copy
 
-from simtk import openmm
+from simtk import openmm, unit
 
 from yank.experiment import AlchemicalPhaseFactory, ExperimentBuilder
 from yank.restraints import RMSD
@@ -84,9 +84,10 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
         goes from 0.0 to 1.0.
         """
         # Add RMSD restraint force on top of the YAML-specified restraint.
-        ligand_dsl = '(mass > 1.5)'
-        receptor_dsl = '((resid 272) or (resid 316) or (resid 322) or (resid 379)) and (name CA)'
-        rmsd_restraint = RMSD(restrained_receptor_atoms=receptor_dsl, restrained_ligand_atoms=ligand_dsl)
+        ligand_dsl = '(element C)'
+        receptor_dsl = '(resname ALA) and (name CA)'
+        #receptor_dsl = '((resid 272) or (resid 316) or (resid 322) or (resid 379)) and (name CA)'
+        rmsd_restraint = RMSD(restrained_receptor_atoms=receptor_dsl, restrained_ligand_atoms=ligand_dsl, RMSD0=0.0*unit.angstroms, K_RMSD=0.6*unit.kilocalories_per_mole/unit.angstrom**2)
 
         # Determine automatically the parameters.
         rmsd_restraint.determine_missing_parameters(self.thermodynamic_state, self.sampler_states,
@@ -124,8 +125,9 @@ class TwoRestraintsBuilder(ExperimentBuilder):
 
         """
         experiment = super(TwoRestraintsBuilder, self)._build_experiment(*args, **kwargs)
+        print(experiment, experiment.phases)
         # Convert AlchemicalPhaseFactories to TwoRestraintsPhaseFactories.
-        for phase_idx, phase in experiment.phases:
+        for phase_idx, phase in enumerate(experiment.phases):
             # Check if we're resuming or not before converting.
             if isinstance(phase, AlchemicalPhaseFactory):
                 experiment.phases[phase_idx] = TwoRestraintsPhaseFactory(phase)

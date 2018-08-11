@@ -11,8 +11,8 @@
 #
 # nodes: number of nodes and GPU request
 #BSUB -n 8
-#BSUB -gpu "num=1:j_exclusive=yes:mode=shared"
-#BSUB -R "{rusage[mem=12,ngpus_physical=2] span[ptile=2]} || {rusage[mem=12,ngpus_physical=3] span[ptile=3]} || {rusage[mem=12,ngpus_physical=4] span[ptile=4]} || {rusage[mem=12,ngpus_physical=1] span[ptile=1]}"
+#BSUB -gpu "num=4:j_exclusive=yes:mode=shared" -R "rusage[mem=12] span[ptile=4]"
+##BSUB -R "{rusage[mem=12,ngpus_physical=2] span[ptile=2]} || {rusage[mem=12,ngpus_physical=3] span[ptile=3]} || {rusage[mem=12,ngpus_physical=4] span[ptile=4]} || {rusage[mem=12,ngpus_physical=1] span[ptile=1]}"
 #
 # job name (default = name of script file)
 #BSUB -J "sensitivity-lilac"
