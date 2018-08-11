@@ -125,7 +125,10 @@ class TwoRestraintsBuilder(ExperimentBuilder):
         """
         experiment = super(TwoRestraintsBuilder, self)._build_experiment(*args, **kwargs)
         # Convert AlchemicalPhaseFactories to TwoRestraintsPhaseFactories.
-        experiment.phases = [TwoRestraintsPhaseFactory(phase) for phase in experiment.phases]
+        for phase_idx, phase in experiment.phases:
+            # Check if we're resuming or not before converting.
+            if isinstance(phase, AlchemicalPhaseFactory):
+                experiment.phases[phase_idx] = TwoRestraintsPhaseFactory(phase)
         return experiment
 
 
