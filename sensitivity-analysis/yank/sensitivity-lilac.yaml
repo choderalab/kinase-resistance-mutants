@@ -8,7 +8,7 @@ options:
   processes_per_experiment: 1
   hydrogen_mass: 3.0 * amu
   checkpoint_interval: 100
-  switch_phase_interval: 100
+  switch_phase_interval: 500
   alchemical_pme_treatment: exact
 
 molecules:
@@ -17,7 +17,7 @@ molecules:
     strip_protons: yes
     pdbfixer:
       apply_mutations:
-        mutations: !Combinatorial [WT, T315I]
+        mutations: !Combinatorial [WT, M244V]
         chain_id: B
 
   imatinib:
@@ -39,15 +39,21 @@ mcmc_moves:
               timestep: 4*femtosecond
               splitting: "V R R R O R R R V"
               n_steps: 1250
+    langevin:
+        type: SequenceMove
+        move_list:
+            - type: LangevinSplittingDynamicsMove
+              timestep: 4*femtosecond
+              splitting: "V R O R V"
+              n_steps: 1250
 
 samplers:
     sams-ligand-mcmc:
         type: SAMSSampler
-        mcmc_moves: mcligand-langevin
+        mcmc_moves: langevin
         state_update_scheme: global-jump
         flatness_threshold: 10.0
         number_of_iterations: 40000
-        online_analysis_interval: 100
         gamma0: 10.0
 
 solvents:
