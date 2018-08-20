@@ -4,7 +4,7 @@ from glob import glob
 
 inputs = {
     'xml_file_path' :  "./data/I403T",
-    'file_set'      :  {'I403T Abl': glob("./data/I403T/*.xml")},
+    'file_set'      :  {'I403TAbl': glob("./data/I403T/*.xml")},
     'ligand_order'  :  ['Bosutinib','Erlotinib','Gefitinib','Ponatinib'],
     'section'       :  'ex280_scan_top_gain100',
     'wavelength'    :  '480',
