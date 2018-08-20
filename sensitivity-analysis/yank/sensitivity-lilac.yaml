@@ -15,7 +15,7 @@ molecules:
   cAbl-imatinib:
     filepath: input/cAbl-imatinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V]
         chain_id: B

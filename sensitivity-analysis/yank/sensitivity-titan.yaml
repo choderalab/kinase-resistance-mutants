@@ -18,7 +18,7 @@ molecules:
   cAbl-imatinib:
     filepath: input/cAbl-imatinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: B
@@ -26,7 +26,7 @@ molecules:
   cAbl-nilotinib:
     filepath: input/cAbl-nilotinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
@@ -34,7 +34,7 @@ molecules:
   cAbl-axitinib:
     filepath: input/cAbl-axitinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
         chain_id: B
@@ -42,7 +42,7 @@ molecules:
   cAbl-bosutinib:
     filepath: input/cAbl-bosutinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
@@ -50,7 +50,7 @@ molecules:
   cAbl-dasatinib:
     filepath: input/cAbl-dasatinib-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
@@ -58,7 +58,7 @@ molecules:
   cAbl-ponatinib:
     filepath: input/cAbl-ponatinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Y253F, E255K, E255V, V299L, T315A, T315I, F317C, F317I, F317L, F317V, M351T, E355A, F359C, F359I, F359V, H396R, E459K]
         chain_id: A
@@ -66,7 +66,7 @@ molecules:
   cAbl-gefitinib:
     filepath: input/cAbl-gefitinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
         chain_id: A
@@ -74,7 +74,7 @@ molecules:
   cAbl-erlotinib:
     filepath: input/cAbl-erlotinib_nowat-uniprot.pdb
     strip_protons: yes
-    pdbfixer:
+    modeller:
       apply_mutations:
         mutations: !Combinatorial [WT, M244V, L248R, L248V, G250E, Q252H, Y253F, Y253H, E255K, E255V, D276G, E279K, E292L, V299L, T315A, T315V, T315I, F317I, F317V, F317R, F317L, M343T, M351T, F359I, F359V, L384M, H396R, F486S]
         chain_id: A
