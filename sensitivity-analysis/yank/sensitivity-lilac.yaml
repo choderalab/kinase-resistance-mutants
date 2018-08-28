@@ -10,6 +10,7 @@ options:
   checkpoint_interval: 100
   switch_phase_interval: 500
   alchemical_pme_treatment: exact
+  default_timestep: !Combinatorial [2.0, 3.0, 4.0]
 
 molecules:
   cAbl-imatinib:
@@ -22,7 +23,7 @@ molecules:
 
   imatinib:
     filepath: input/ligands-posed-imatinib.sdf
-    select: !Combinatorial [0,1]
+    select: 0
     openeye:
       quacpac: am1-bcc
     antechamber:
@@ -36,14 +37,12 @@ mcmc_moves:
               displacement_sigma: 1.0*nanometer
             - type: MCRotationMove
             - type: LangevinSplittingDynamicsMove
-              timestep: 4*femtosecond
               splitting: "V R R R O R R R V"
               n_steps: 1250
     langevin:
         type: SequenceMove
         move_list:
             - type: LangevinSplittingDynamicsMove
-              timestep: 4*femtosecond
               splitting: "V R O R V"
               n_steps: 1250
 
@@ -55,6 +54,12 @@ samplers:
         flatness_threshold: 10.0
         number_of_iterations: 40000
         gamma0: 10.0
+
+    repex:
+      type: ReplicaExchangeSampler
+      mcmc_moves: langevin
+      replica_mixing_scheme: swap-all
+      number_of_iterations: 40000
 
 solvents:
   pme:
