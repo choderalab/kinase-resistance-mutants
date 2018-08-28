@@ -98,3 +98,5 @@ experiments:
   protocol: absolute-binding
   restraint:
     type: !Combinatorial [PeriodicTorsionBoresch, Harmonic]
+  options:
+    default_timestep: !Combinatorial [2.0 * femtosecond, 3.0 * femtosecond, 4.0 * femtosecond]

@@ -10,7 +10,6 @@ options:
   checkpoint_interval: 100
   switch_phase_interval: 500
   alchemical_pme_treatment: exact
-  default_timestep: 4.0 * femtosecond
 
 molecules:
   cAbl-imatinib:
@@ -60,6 +59,7 @@ samplers:
       mcmc_moves: langevin
       replica_mixing_scheme: swap-all
       number_of_iterations: 40000
+      timestep: 4.0 * femtosecond
 
 solvents:
   pme:
