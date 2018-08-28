@@ -10,7 +10,7 @@ options:
   checkpoint_interval: 100
   switch_phase_interval: 500
   alchemical_pme_treatment: exact
-  default_timestep: 4.0
+  default_timestep: 4.0 * femtosecond
 
 molecules:
   cAbl-imatinib:
