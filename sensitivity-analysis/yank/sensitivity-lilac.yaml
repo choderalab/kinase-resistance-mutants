@@ -1,7 +1,7 @@
 options:
   minimize: no
   verbose: yes
-  output_dir: mutants-timestep-exp/
+  output_dir: mutants/
   pressure: 1*atmosphere
   resume_setup: yes
   resume_simulation: yes
@@ -44,6 +44,7 @@ mcmc_moves:
             - type: LangevinSplittingDynamicsMove
               splitting: "V R O R V"
               n_steps: 1250
+              n_restart_attempts: 6
 
 samplers:
     sams-ligand-mcmc:
@@ -98,4 +99,4 @@ experiments:
   restraint:
     type: !Combinatorial [PeriodicTorsionBoresch, Harmonic]
   options:
-    default_timestep: !Combinatorial [2.0 * femtosecond, 3.0 * femtosecond, 4.0 * femtosecond]
+    default_timestep:  4.0 * femtosecond
