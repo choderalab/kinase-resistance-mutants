@@ -1,7 +1,7 @@
 options:
   minimize: no
   verbose: yes
-  output_dir: mutants-timestep-exp/
+  output_dir: mutants-125steps/
   pressure: 1*atmosphere
   resume_setup: yes
   resume_simulation: yes
