@@ -2,18 +2,14 @@
 
 """
 Run YANK with two restraints and starting in the noninteracting state.
-
 The script is still in a prototype phase. We use two restraints: a harmonic
 restraint that is always on and a orientational restraint that we activate
 while we turn off the sterics.
-
 Moreover, we force the SAMSSampler to start in the noninteracting state (i.e.,
 the last one) to work around eventual clashes in the initial docked structure.
-
 Notes
 -----
 The script assumes
-
 """
 
 # =============================================================================================
@@ -78,7 +74,6 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
 
     def _add_rmsd_restraint(self):
         """Add a RMSD restraint to the reference ThermodynamicState.
-
         The restraint is controlled by lambda_restraints * (1 - lambda_restraints)
         so that it turns on only in the middle of the protocol when lambda_restraints
         goes from 0.0 to 1.0.
@@ -86,7 +81,6 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
         # Add RMSD restraint force on top of the YAML-specified restraint.
         ligand_dsl = '(element C)'
         receptor_dsl = '(resname ALA) and (name CA)'
-        #receptor_dsl = '((resid 272) or (resid 316) or (resid 322) or (resid 379)) and (name CA)'
         rmsd_restraint = RMSD(restrained_receptor_atoms=receptor_dsl, restrained_ligand_atoms=ligand_dsl, RMSD0=0.0*unit.angstroms, K_RMSD=0.6*unit.kilocalories_per_mole/unit.angstrom**2)
 
         # Determine automatically the parameters.
@@ -102,7 +96,7 @@ class TwoRestraintsPhaseFactory(AlchemicalPhaseFactory):
 
         # Modify the restraint force to be on only in the middle of the protocol.
         energy_function = restraint_force.getEnergyFunction().replace('lambda_restraints',
-                                                                      'lambda_restraints * (1 - lambda_restraints)')
+                                                                      '4 * lambda_restraints * (1 - lambda_restraints)')
         restraint_force.setEnergyFunction(energy_function)
 
         # Update reference thermodynamic state with the new definition of the force.
@@ -114,18 +108,14 @@ class TwoRestraintsBuilder(ExperimentBuilder):
 
     def _build_experiment(self, *args, **kwargs):
         """Prepare a single experiment.
-
         Override parent method to build an experiment composed of two
         TwoRestraintsPhaseFactories instead of AlchemicalPhaseFactories.
-
         Returns
         -------
         yaml_experiment : Experiment
             A Experiment object.
-
         """
         experiment = super(TwoRestraintsBuilder, self)._build_experiment(*args, **kwargs)
-        print(experiment, experiment.phases)
         # Convert AlchemicalPhaseFactories to TwoRestraintsPhaseFactories.
         for phase_idx, phase in enumerate(experiment.phases):
             # Check if we're resuming or not before converting.
