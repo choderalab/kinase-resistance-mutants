@@ -1,0 +1,16 @@
+@<TRIPOS>MOLECULE
+3qri.A
+2 0 2 0 0 
+SMALL
+USER_CHARGES
+
+
+@<TRIPOS>ATOM
+  1 NA     -20.6905    11.6155    35.4622 Na    1 NA   1.0000 
+  2 NA     -24.1134    15.8983    22.9678 Na    2 NA   1.0000 
+@<TRIPOS>BOND
+@<TRIPOS>SUBSTRUCTURE
+  1 NA   1 GROUP 4 A **** 0
+  2 NA   2 GROUP 4 A **** 0
+
+# MOE 2012.10 (io_trps.svl 2012.10)
